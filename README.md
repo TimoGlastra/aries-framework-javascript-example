@@ -1,6 +1,6 @@
 # Aries Framework JavaScript Example
 
-This example demonstrates how to use the Aries Framework JavaScript to create a simple agent that can connect to other agents and exchange messages.
+This example demonstrates how to use the Aries Framework JavaScript to create a simple agent that can connect to other agents and exchange messages. The setup part, which is the interesting part of this repository, is done in the `src/agen.ts` file.
 
 ## Getting Started
 
