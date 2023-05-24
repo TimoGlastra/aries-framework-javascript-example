@@ -51,9 +51,9 @@ export const agent = new Agent({
       id: 'demo-agent',
       key: 'demo-agent-key',
     },
-    endpoints: ['http://localhost:6006/didcomm'],
     // Change to view logs in terminal
     logger: new ConsoleLogger(LogLevel.trace),
+    endpoints: ['http://localhost:6007/didcomm'],
   },
   modules: {
     // Storage
@@ -160,7 +160,7 @@ export const agent = new Agent({
 
 agent.registerInboundTransport(
   new HttpInboundTransport({
-    port: 6006,
+    port: 6007,
     path: '/didcomm',
   })
 )
