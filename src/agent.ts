@@ -34,6 +34,9 @@ import {
   IndyVdrSovDidResolver,
 } from '@aries-framework/indy-vdr'
 import { server } from './server'
+import { ariesAskar } from '@hyperledger/aries-askar-nodejs'
+import { anoncreds } from '@hyperledger/anoncreds-nodejs'
+import { indyVdr } from '@hyperledger/indy-vdr-nodejs'
 
 // provides legacy (non-ledger-agnostic) indy anoncreds for
 // v1/v2 proof/credential protocol
@@ -52,7 +55,9 @@ export const agent = new Agent({
   },
   modules: {
     // Storage
-    askar: new AskarModule(),
+    askar: new AskarModule({
+      ariesAskar,
+    }),
 
     // Connections module is enabled by default, but we can
     // override the default configuration
@@ -115,10 +120,13 @@ export const agent = new Agent({
       registries: [new IndyVdrAnonCredsRegistry()],
     }),
     // Use anoncreds-rs as anoncreds backend
-    _anoncreds: new AnonCredsRsModule(),
+    anoncredsRs: new AnonCredsRsModule({
+      anoncreds,
+    }),
 
     // Configure supported indy ledger (bcovrin:test)
     indyVdr: new IndyVdrModule({
+      indyVdr,
       networks: [
         {
           indyNamespace: 'bcovrin:test',

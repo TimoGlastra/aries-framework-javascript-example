@@ -31,6 +31,7 @@ async function app() {
   const qrInvitation = await QRCode.toString(shortUrl, { type: 'terminal' })
 
   console.log(qrInvitation)
+  console.log(shortUrl)
 }
 
 app()
